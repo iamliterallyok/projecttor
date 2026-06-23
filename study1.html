@@ -547,6 +547,9 @@ if (localStorage.getItem(current.concat("terms")) != "1") {
 if (parseInt(localStorage.getItem(current.concat("qat"))) < 3) {
   lstudymodes.splice(lstudymodes.indexOf("Process of Elimination"), 1);
 }
+if (parseInt(localStorage.getItem(current.concat("qat"))) < 4) {
+  tstudymodes.splice(tstudymodes.indexOf("Hot Seat"), 1);
+}
 if (localStorage.getItem(current.concat("chronological")) != "1") {
   vstudymodes.splice(1, 1);
 }
@@ -624,6 +627,11 @@ for (i = 0; i < oldrstudymodes.length; i++) {
   else if (localStorage.getItem(current.concat("chronological")) != "1" && oldrstudymodes[i] == "Chronological Order") {}
   else if (localStorage.getItem(current.concat("whiteboardrecommended")) != "1" && oldrstudymodes[i] == "Explain with Whiteboard") {}
   else if (parseInt(localStorage.getItem(current.concat("qat"))) < 3 && oldrstudymodes[i] == "Process of Elimination") {}
+  else if (parseInt(localStorage.getItem(current.concat("qat"))) < 4 && oldrstudymodes[i] == "Hot Seat") {}
+  else if (parseInt(localStorage.getItem(current.concat("qat"))) < 4 && oldrstudymodes[i] == "Hot Seat-Multiplayer") {}
+  else if (parseInt(localStorage.getItem(current.concat("qat"))) < 4 && oldrstudymodes[i] == "Hot Seat-Auditory") {}
+  else if (parseInt(localStorage.getItem(current.concat("qat"))) < 4 && oldrstudymodes[i] == "Hot Seat-True or False") {}
+  else if (parseInt(localStorage.getItem(current.concat("qat"))) < 4 && oldrstudymodes[i] == "Hot Seat-Multiplayer True or False") {}
   else if (rstudymodes.indexOf(oldrstudymodes[i]) > -1) {} else {
     rstudymodes.push(oldrstudymodes[i]);
   }
