@@ -783,6 +783,7 @@ function toggleaudio() {
     }
 
     if (!audio) {
+
         audio = true;
         document.getElementById("microphone").src =
             "microphonered.png";
@@ -800,24 +801,29 @@ function toggleaudio() {
 
             let spokenText = "";
 
-            // ONLY PROCESS NEW RESULTS
             for (
                 let i = event.resultIndex;
                 i < event.results.length;
                 i++
             ) {
-                spokenText += event.results[i][0].transcript + " ";
+                spokenText +=
+                    event.results[i][0].transcript + " ";
             }
 
+            spokenText = spokenText.trim();
+
             document.getElementById("answer").value =
-                spokenText.toString();
+                spokenText;
 
             const options =
                 document.getElementsByClassName("imcq");
 
             for (let u = 0; u < options.length; u++) {
 
-                const optionText = options[u];
+                // FIX: use the text inside the span
+                const optionText =
+                    options[u].textContent.trim();
+
                 if (comparetwo(optionText, spokenText)) {
                     checkanswer(u);
                     return;
@@ -830,7 +836,7 @@ function toggleaudio() {
         };
 
         recognition.onend = () => {
-            if (audio) {
+            if (audio && recognition) {
                 recognition.start();
             }
         };
