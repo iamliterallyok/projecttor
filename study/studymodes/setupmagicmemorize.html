@@ -961,6 +961,8 @@ function start() {
   stringe = stringe + "/0.0/";
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("mm", current);
-  window.location.href = "../../study/studymodes/" + pages[agg2.indexOf(ordered[0])] + ".html";
+  sessionStorage.setItem("stu", current);
+  sessionStorage.setItem("wpr", "../study/studymodes/" + pages[agg2.indexOf(ordered[0])]);
+  window.location.href = "../../redirecting/";
 }
 </script>
