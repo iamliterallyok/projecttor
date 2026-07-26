@@ -478,6 +478,13 @@ sessionStorage.removeItem("setToUse");
 } else {
 window.location.href = "../../study/studyurlerror.html";
 }
+if (sessionStorage.getItem("mm" == current) {
+  document.getElementById("finish").innerHTML = "Next";
+  document.getElementById("finish").setAttribute("onclick", "ontothenext()");
+}
+function ontothenext() {
+  
+}
 document.getElementById("qtext").innerHTML = localStorage.getItem(current.concat("q1"));
 currentq = 1;
 congratsmsg = ["Great Job!", "Perfect!", "Nice Work!", "Good Work!", "Good Job!"];
