@@ -11,6 +11,7 @@
 <a href="../../settings/"><div style="top: 85.5dvh" class="hyperlink"><img src="../../media/images/toolbar/settings.png" class="hpimg"><p class="hplabel">Settings</p></div></a>
 </div>
 <div id="content">
+  <div id="whitebgg"></div>
   <button onclick="start()" id="start">Start</button>
   <div id="2part">
   <button onclick="soleft()" id="scrollleft"></button>
@@ -316,6 +317,14 @@ body {
   height: 100%;
   right: 0;
   top: 0;
+}
+#whitebgg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
   background-image: url("../../media/images/whitebg.png");
   background-position: 50% 50%;
   background-size: cover;
