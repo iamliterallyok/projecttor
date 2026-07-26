@@ -420,11 +420,6 @@ if (localStorage.getItem("darkmode") == "1") {
   }
 }
 document.getElementById("fadedbg").style.backgroundImage = "url('../../media/images/setcovers/".concat(localStorage.getItem(current.concat("p")), ".png')");
-resizeeverything();
-window.addEventListener("resize", resizeeverything);
-for (i = 1; i <= parseInt(localStorage.getItem("numofsets")); i++) {
-  creategroup(i.toString());
-}
 function redirect(url, ttobb) {
   if (localStorage.getItem("timed")) {
   if (localStorage.getItem(ttobb+"whiteboardrecommended")) {
