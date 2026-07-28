@@ -615,6 +615,69 @@ sessionStorage.removeItem("setToUse");
 } else {
 window.location.href = "../../study/studyurlerror.html";
 }
+  
+//Begin
+if (sessionStorage.getItem("mm") == current) {
+  document.getElementById("finish").innerHTML = "Next";
+  document.getElementById("finish").setAttribute("onclick", "ontothenext()");
+}
+pages = ["answerwithanantonym", "processofelimination", "matchingsingleplayer", "chronologicalorder", "flashcards", "unscramble", "matchingmultiplayer", "trueorfalse", "hotseat", "hotseatmultiplayer", "hotseatauditory", "explain", "explainwithwhiteboard", "hotseattrueorfalse", "hotseatmultiplayertrueorfalse", "guesstheterm", "askandanswer", "sketchandanswer", "readandspeak", "listenandspeak", "unscrambleauditory", "fillintheblank", "readandanswer", "timedreadandanswer", "usenotestoanswer", "usenotestospeak", "antonymone", "antonymtwo", "notesone", "notestwo", "notesauditoryone", "notesauditorytwo", "sketchone", "sketchtwo"]
+function ontothenext() {
+  ogmm = localStorage.getItem(current+"mm");
+  stringe = (parseInt(ogmm.substring(0,1)) + 1).toString() + "/";
+  nptogo = parseInt(ogmm.substring(0,1)) + 1;
+  ogmmexc = ogmm.substring(2);
+  allplacestogo = [];
+  placeofint = "";
+  for (i = 0; i < ogmmexc.length; i++) {
+    if (ogmmexc[i] == "/") {
+      allplacestogo.push(parseInt(placeofint));
+      stringe = stringe + "/";
+      lindex = i;
+      break;
+    } else if (ogmmexc[i] == ".") {
+      allplacestogo.push(parseInt(placeofint));
+      placeofint = "";
+      stringe = stringe + ogmmexc[i];
+    } else {
+      placeofint = placeofint + ogmmexc[i];
+      stringe = stringe + ogmmexc[i];
+    }
+  }
+  ogmmexc = ogmmexc.substring(lindex+1);
+  dotyet = false;
+  brfdota = "";
+  brfdotb = "";
+  for (i = 0; i < ogmmexc.length; i++) {
+    if (ogmmexc[i] == "/") {
+      break;
+    } else if (ogmmexc[i] == ".") {
+      dotyet = true;
+    } else {
+      if (dotyet) {
+        brfdotb = brfdotb + ogmmexc[i];
+      } else {
+        brfdota = brfdota + ogmmexc[i];
+      }
+    }
+  }
+  brfdota = parseInt(brfdota);
+  brfdotb = parseInt(brfdotb);
+  stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
+  localStorage.setItem(current + "mm", stringe);
+  sessionStorage.setItem("stu", current);
+  sessionStorage.setItem("wpr", "../study/studymodes/" + pages[allplacestogo[nptogo]]);
+  window.location.href = "../../redirecting/";
+}
+numttalsz = 0;
+setInterval(function() {
+  if (document.getElementById("secondpart").classList.contains("hidden")) {
+    numttalsz++;
+  }
+}, 1000);
+//End
+
+
 currentq = 1;
 congratsmsg = ["Great Job!", "Perfect!", "Nice Work!", "Good Work!", "Good Job!"];
 nopemsg = ["Oops", "Not quite", ":(", "Not exactly", "Erm, actually..."];
