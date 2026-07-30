@@ -100,7 +100,7 @@ If one clause in this EULA is invalid, the rest remains in force.
 
 If You have any questions regarding this agreement, You may contact solely by email:
 
-  iamliterallyok@gmail.com
+  studyslooth@gmail.com
 
 This License was created with assistance from the *TermsFeed EULA Generator*
 
