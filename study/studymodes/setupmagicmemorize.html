@@ -489,6 +489,26 @@ function randomizearrays() {
   allgames2 = ["Answer with an Antonym", "Process of Elimination", "Matching-Singleplayer", "Chronological Order", "Flashcards", "Unscramble", "Matching-Multiplayer", "True or False", "Hot Seat", "Hot Seat-Multiplayer", "Hot Seat-Auditory", "Explain", "Explain with Whiteboard", "Hot Seat-True or False", "Hot Seat-Multiplayer True or False", "Guess the Term", "Ask and Answer", "Sketch and Answer", "Read and Speak", "Listen and Speak", "Unscramble-Auditory", "Fill-in-the-Blank", "Read and Answer", "Timed Read and Answer", "Use Notes to Answer", "Use Notes to Speak", "Practice Quiz"];
   gametypes2 = [["l"], ["l","t"], ["l","t"], ["l","t","v"], ["t","v"], ["t","w"], ["s","t","v"], ["l","t"], ["l","t","w"], ["l","s","t","w"], ["a","l","t"], ["a","s"], ["a","s","v","w"], ["l","t","w"], ["l","s","t","w"], ["a","s","v"], ["a","s"], ["l","v","w"], ["a","w"], ["a"], ["a","t"], ["l","t","w"], ["w"], ["w"], ["l","w"], ["a","l","w"], ["l","w"]];
   gamedifs2 = [1, 2, 2, 4, 3, 2, 2, 2, 4, 3, 4, 5, 5, 2, 2, 2, 2, 1, 5, 5, 2, 2, 5, 5, 1, 1, 0];
+  if (localStorage.getItem(current.concat("terms")) != "1") {
+    allgames2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
+    gametypes2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
+    gamedifs2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
+  }
+  if (parseInt(localStorage.getItem(current.concat("qat"))) < 3) {
+    allgames2.splice(allgames2.indexOf("Process of Elimination"), 1);
+    gametypes2.splice(allgames2.indexOf("Process of Elimination"), 1);
+    gamedifs2.splice(allgames2.indexOf("Process of Elimination"), 1);
+  }
+  if (parseInt(localStorage.getItem(current.concat("qat"))) < 4) {
+    allgames2.splice(allgames2.indexOf("Hot Seat"), 1);
+    gametypes2.splice(allgames2.indexOf("Hot Seat"), 1);
+    gamedifs2.splice(allgames2.indexOf("Hot Seat"), 1);
+  }
+  if (localStorage.getItem(current.concat("chronological")) != "1") {
+    allgames2.splice(allgames2.indexOf("Chronological Order"), 1);
+    gametypes2.splice(allgames2.indexOf("Chronological Order"), 1);
+    gamedifs2.splice(allgames2.indexOf("Chronological Order"), 1);
+  }
   allgames = [];
   gametypes = [];
   gamedifs = [];
@@ -501,26 +521,6 @@ function randomizearrays() {
     allgames2.splice(newindex, 1);
     gametypes2.splice(newindex, 1);
     gamedifs2.splice(newindex, 1);
-  }
-  if (localStorage.getItem(current.concat("terms")) != "1") {
-    allgames.splice(allgames.indexOf("Answer with an Antonym"), 1);
-    gametypes.splice(allgames.indexOf("Answer with an Antonym"), 1);
-    gamedifs.splice(allgames.indexOf("Answer with an Antonym"), 1);
-  }
-  if (parseInt(localStorage.getItem(current.concat("qat"))) < 3) {
-    allgames.splice(allgames.indexOf("Process of Elimination"), 1);
-    gametypes.splice(allgames.indexOf("Process of Elimination"), 1);
-    gamedifs.splice(allgames.indexOf("Process of Elimination"), 1);
-  }
-  if (parseInt(localStorage.getItem(current.concat("qat"))) < 4) {
-    allgames.splice(allgames.indexOf("Hot Seat"), 1);
-    gametypes.splice(allgames.indexOf("Hot Seat"), 1);
-    gamedifs.splice(allgames.indexOf("Hot Seat"), 1);
-  }
-  if (localStorage.getItem(current.concat("chronological")) != "1") {
-    allgames.splice(allgames.indexOf("Chronological Order"), 1);
-    gametypes.splice(allgames.indexOf("Chronological Order"), 1);
-    gamedifs.splice(allgames.indexOf("Chronological Order"), 1);
   }
 }
 lrnsty = ["auditory", "logical", "social", "tactile", "visual", "written"];
