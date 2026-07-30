@@ -714,14 +714,8 @@ function createsq(tof, type) {
   newSQ.innerHTML = "Q: " + localStorage.getItem(current.concat("q", type)) + "<br><span style='font-weight: bold'>A: " + localStorage.getItem(current.concat("a", type)) + "</span>";
   if (localStorage.getItem("darkmode") == "1") {
     newSQ.classList.add("sqq");
-    }
-    document.getElementById("fmq").appendChild(newSQ);
-  } else {
-    newSQ = document.createElement("div");
-    newSQ.innerHTML = "Q: " + localStorage.getItem(current.concat("q", type)) + "<br><span style='font-weight: bold'>A: " + localStorage.getItem(current.concat("a", type)) + "</span>";
-    if (localStorage.getItem("darkmode") == "1") {
     newSQ.classList.add("sqqdm");
-    } else {
+  } else {
     newSQ.classList.add("sqq");
   }
   if (tof == true) {
