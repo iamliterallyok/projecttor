@@ -524,27 +524,6 @@ function randomizearrays() {
   }
 }
 lrnsty = ["auditory", "logical", "social", "tactile", "visual", "written"];
-if (localStorage.getItem(current.concat("terms")) != "1") {
-  allgames.splice(allgames.indexOf("Answer with an Antonym"), 1);
-  gametypes.splice(allgames.indexOf("Answer with an Antonym"), 1);
-  gamedifs.splice(allgames.indexOf("Answer with an Antonym"), 1);
-}
-if (parseInt(localStorage.getItem(current.concat("qat"))) < 3) {
-  allgames.splice(allgames.indexOf("Process of Elimination"), 1);
-  gametypes.splice(allgames.indexOf("Process of Elimination"), 1);
-  gamedifs.splice(allgames.indexOf("Process of Elimination"), 1);
-}
-if (parseInt(localStorage.getItem(current.concat("qat"))) < 4) {
-  allgames.splice(allgames.indexOf("Hot Seat"), 1);
-  gametypes.splice(allgames.indexOf("Hot Seat"), 1);
-  gamedifs.splice(allgames.indexOf("Hot Seat"), 1);
-}
-if (localStorage.getItem(current.concat("chronological")) != "1") {
-  allgames.splice(allgames.indexOf("Chronological Order"), 1);
-  gametypes.splice(allgames.indexOf("Chronological Order"), 1);
-  gamedifs.splice(allgames.indexOf("Chronological Order"), 1);
-}
-  
 usrprf = [];
 for (i = 0; i < 6; i++) {
   if (localStorage.getItem(lrnsty[i]) == "1") {
