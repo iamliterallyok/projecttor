@@ -576,9 +576,11 @@ function ontothenext() {
   brfdotb = parseInt(brfdotb);
   stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
 
+  stringe2 = "";
   for (i = 0; i < notestoUse.length; i++) {
-    stringe = stringe + notestoUse[i] + "\\\\\\";
+    stringe2 = stringe2 + notestoUse[i] + "\\\\\\";
   }
+  localStorage.setItem(current + "mmrefs", stringe2);
 
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
