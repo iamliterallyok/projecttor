@@ -34,7 +34,7 @@
   <div class="fmq2"><div id="lilgrayguy"></div></div>
   <div id="fmq">
     <div id="whitebit"></div>
-    <span id="sq">Struggle Questions</span>
+    <span id="sq">Question Summary</span>
   </div>
   <div id="percentage">
   <div id="middlecircle">
@@ -577,6 +577,11 @@ function ontothenext() {
   brfdota = parseInt(brfdota);
   brfdotb = parseInt(brfdotb);
   stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
+
+  for (i = 0; i < notestoUse.length; i++) {
+    stringe = stringe + notestoUse[i] + "\\\\\\";
+  }
+
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
   sessionStorage.setItem("wpr", "../study/studymodes/" + pages[allplacestogo[nptogo]]);
@@ -659,6 +664,7 @@ const frontcircle = document.getElementById("frontcircle")
 
 // ===== Your Results Function =====
 function showresults() {
+  allcorrect = allnumbers.length;
   howdidido = Math.floor(360 * (allcorrect / allnumbers.length)).toString();
   ofo = allcorrect / allnumbers.length;
   if (ofo < 0.4) {
@@ -674,29 +680,8 @@ function showresults() {
     cfc = "#2dcc70";
     posescore("amazed");
   } 
-  if (ofo == 1) {
-    createsq("e");
-  } else {
-    whichqs = [];
-    prevnumfound = 0;
-    for (a = 0; a < parseInt(localStorage.getItem(current.concat("qat"))); a++) {
-      numfound = 0;
-      for (b = 0; b < allnumbers.length; b++) {
-        if (allnumbers[b] == (a + 1).toString()) {
-          numfound++;
-        }
-      }
-      if (numfound > prevnumfound) {
-        whichqs = [];
-        whichqs.push((a + 1).toString());
-        prevnumfound = numfound;
-      } else if (numfound == prevnumfound) {
-        whichqs.push((a + 1).toString());
-      } else {}
-    }
-    for (z = 0; z < whichqs.length; z++) {
-      createsq(whichqs[z]);
-    }
+  for (i = 1; i <= parseInt(localStorage.getItem(current + "qat")); i++) {
+    createsq(true, i);
   }
   if (howdidido == 360) {
   document.getElementById("percentage").style.backgroundColor = "#2dcc70";
@@ -739,27 +724,22 @@ function showresults() {
 }
 
 allcorrect = 0;
-function createsq(type) {
-  if (type == "e") {
-    newSQ = document.createElement("div");
-    newSQ.innerHTML = "Nice Work! No struggle questions to show.";
-    if (localStorage.getItem("darkmode") == "1") {
-    newSQ.classList.add("sqqdm");
-    } else {
+function createsq(tof, type) {
+  newSQ = document.createElement("div");
+  newSQ.innerHTML = "Q: " + localStorage.getItem(current.concat("q", type)) + "<br><span style='font-weight: bold'>A: " + localStorage.getItem(current.concat("a", type)) + "</span>";
+  if (localStorage.getItem("darkmode") == "1") {
     newSQ.classList.add("sqq");
-    }
-    document.getElementById("fmq").appendChild(newSQ);
+    newSQ.classList.add("sqqdm");
   } else {
-    newSQ = document.createElement("div");
-    newSQ.innerHTML = "Q: " + localStorage.getItem(current.concat("q", type)) + "<br><span style='font-weight: bold'>A: " + localStorage.getItem(current.concat("a", type)) + "</span>";
-    if (localStorage.getItem("darkmode") == "1") {
-    newSQ.classList.add("sqqdm");
-    } else {
     newSQ.classList.add("sqq");
-    }
-    document.getElementById("fmq").appendChild(newSQ);
-    resizeSQs();
   }
+  if (tof == true) {
+    newSQ.style.outline = "0.3dvh solid #2dcc70";
+  } else {
+    newSQ.style.outline = "0.3dvh solid #ff8500";
+  }
+  document.getElementById("fmq").appendChild(newSQ);
+  resizeSQs();
 }
 currentnotesq = 1;
 window.addEventListener("resize", resizeSQs);
@@ -772,144 +752,6 @@ function resizeSQs() {
 }
 function check() {
   document.getElementById("check").setAttribute("onclick", "");
-  if (isquestions) {
-  if (localStorage.getItem("gn") == "1") {
-    correcton = localStorage.getItem(current.concat("a", allnumbers[currentq - 1])).toUpperCase() == document.getElementById("answer").value.toUpperCase();
-  } else {
-    newword = "";
-    allwords = [];
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    thequestion = document.getElementById("answer").value.toLowerCase();
-    for (i = 0; i < thequestion.length; i++) {
-      if (i+1 == thequestion.length) {
-        if (alphabet.indexOf(thequestion[i]) != -1) {
-        allwords.push(newword.concat(thequestion[i]));
-        } else if (newword != "") {
-        allwords.push(newword);
-        }
-      } else if (alphabet.indexOf(thequestion[i]) != -1) {
-        newword = newword.concat(thequestion[i]);
-      } else {
-        if (newword != "") {
-        allwords.push(newword);
-        }
-        newword = "";
-      }
-    }
-    newword = "";
-    allwordsa = [];
-    thequestion = localStorage.getItem(current.concat("a", allnumbers[currentq - 1])).toLowerCase();
-    for (i = 0; i < thequestion.length; i++) {
-      if (i+1 == thequestion.length) {
-        if (alphabet.indexOf(thequestion[i]) != -1) {
-        allwordsa.push(newword.concat(thequestion[i]));
-        } else if (newword != "") {
-        allwordsa.push(newword);
-        }
-      } else if (alphabet.indexOf(thequestion[i]) != -1) {
-        newword = newword.concat(thequestion[i]);
-      } else {
-        if (newword != "") {
-        allwordsa.push(newword);
-        }
-        newword = "";
-      }
-    }
-    nallwords = [];
-    unimportantWords = [
-  "a","an","the","about","above","across","after","against","along","amid","among","around",
-  "at","before","behind","below","beneath","beside","between","beyond","by","despite","down",
-  "during","except","for","from","in","inside","into","near","of","off","on","onto","out",
-  "outside","over","since","through","throughout","till","to","toward","under","underneath",
-  "until","up","upon","with","within","without",
-  "der","die","das","ein","eine","einer","einem","einen","eines","dem","den","des",
-  "an","auf","aus","bei","durch","für","gegen","hinter","in","mit","nach","neben","ohne",
-  "seit","um","unter","über","von","vor","während","wegen","zu","zum","zur",
-  "il","lo","la","i","gli","le","un","una","uno","del","della","dello","dei","degli","dell'",
-  "a","da","di","in","su","con","tra","fra","sopra","sotto","senza","dopo","prima","fino","entro",
-  "le","la","les","un","une","des","du","de","d'","au","aux",
-  "à","chez","dans","en","sur","sous","devant","derrière","par","pour","sans","vers",
-  "avec","entre","pendant","jusqu’à","depuis","avant","après","près","autour",
-  "el","la","los","las","un","una","unos","unas","al","del",
-  "a","ante","bajo","con","contra","de","desde","en","entre","hacia","hasta",
-  "sin","sobre","tras","durante","mediante",
-  "and","or","but","nor","so","yet","for","although","because","since","unless","while","whereas","if","as","though","even","once","when",
-  "und","oder","aber","denn","doch","sondern","obwohl","weil","da","wenn","falls","sowie","solange","bis","bevor","nachdem","während","obgleich",
-  "e","o","ma","né","però","anche se","poiché","dato che","quando","finché","se","mentre","perché","come","anche","appena","fino a",
-  "et","ou","mais","ni","car","donc","tandis que","parce que","puisque","lorsque","si","quoique","bien que","comme","pendant que","avant que","après que",
-  "y","o","pero","ni","aunque","porque","pues","ya que","mientras","cuando","hasta que","si","como","una vez que"
-];
-
-    for (i = 0; i < allwords.length; i++) {
-      if (unimportantWords.indexOf(allwords[i]) == -1) {
-        nallwords.push(allwords[i]);
-      }
-    }
-    allwords = nallwords;
-    nallwords = [];
-    for (i = 0; i < allwordsa.length; i++) {
-      if (unimportantWords.indexOf(allwordsa[i]) == -1) {
-        nallwords.push(allwordsa[i]);
-      }
-    }
-    allwordsa = nallwords;
-    numtobeat = allwordsa.length * 0.85;
-    numhave = 0;
-    for (i = 0; i < allwords.length; i++) {
-      if (allwordsa.indexOf(allwords[i]) > -1) {
-        ogi = i;
-        if (allwordsa.indexOf(allwords[i]) <= i) {
-          i--;
-        }
-        eindex = allwordsa.indexOf(allwords[ogi]);
-        allwords.splice(allwords[ogi], 1);
-        allwordsa.splice(eindex, 1);
-        numhave++; 
-      }
-    }
-    correcton = numhave >= numtobeat;
-  }
-  if (correcton) {
-    if (currentq == allnumbers.length) {
-      clbl = 100;
-    }
-    if (localStorage.getItem("darkmode") == "1") {
-      document.getElementById("title").style.color = "white";
-      document.getElementById("popup").style.boxShadow = "0 0 10dvh black";
-    } else {
-      document.getElementById("title").style.color = "#c12020";
-      document.getElementById("popup").style.boxShadow = "0 0 10dvh rgb(173, 173, 173)";
-    }
-    allcorrect++;
-    pose("happy");
-    document.getElementById("answer").style.pointerEvents = "none";
-    document.getElementById("insloadbar").style.backgroundColor = "#2dcc70";
-    document.getElementById("popup").style.top = "60dvh";
-    random = Math.floor(Math.random() * congratsmsg.length);
-    document.getElementById("title").innerHTML = congratsmsg[random];
-    document.getElementById("desc").innerHTML = "<span style='font-weight: bold'>Correct Answer: </span>".concat(localStorage.getItem(current.concat("a", allnumbers[currentq - 1])), "<br><br><br><br><br>");
-  } else {
-    if (localStorage.getItem("darkmode") == "1") {
-      document.getElementById("title").style.color = "white";
-      document.getElementById("popup").style.boxShadow = "0 0 10dvh black";
-    } else {
-      document.getElementById("title").style.color = "#c12020";
-      document.getElementById("popup").style.boxShadow = "0 0 10dvh rgb(173, 173, 173)";
-    }
-    document.getElementById("answer").style.pointerEvents = "none";
-    pose("confused");
-    allnumbers.push(allnumbers[currentq - 1]);
-    document.getElementById("popup").style.top = "60dvh";
-    random = Math.floor(Math.random() * nopemsg.length);
-    document.getElementById("title").innerHTML = nopemsg[random];
-    document.getElementById("desc").innerHTML = "<span style='font-weight: bold'>Your Answer: </span>".concat(document.getElementById("answer").value, "<br><br><span style='font-weight: bold'>Correct Answer: </span>", localStorage.getItem(current.concat("a", allnumbers[currentq - 1])), "<br><br><br><br><br>");
-  }
-  if (clbl != 100) {
-  clbl += (100 - clbl) / (allnumbers.length + 1 - currentq);
-  }
-  document.getElementById("insloadbar").style.width = 40 + clbl * 0.6 + "%";
-  currentq++;
-  } else {
     currentnotesq++;
     notestoUse.push(document.getElementById("inputnotes").value);
     if (localStorage.getItem("darkmode") == "1") {
@@ -925,10 +767,8 @@ function check() {
     document.getElementById("popup").style.top = "60dvh";
     document.getElementById("desc").innerHTML = "You'll use these later when you answer the questions.";
     document.getElementById("title").innerHTML = "Great Notes!";
-    clbl += 1/parseInt(localStorage.getItem(current.concat("qat")))
-    document.getElementById("insloadbar").style.width = clbl * 40 + "%";
-  }
-  
+    clbl += 1/parseInt(localStorage.getItem(current.concat("qat")));
+    document.getElementById("insloadbar").style.width = clbl * 100 + "%";
 }
 function pose(exp) {
   if (exp == "confused") {
@@ -970,7 +810,7 @@ function posescore(exp) {
   }, 1500);
 }
 function next() {
-  if (currentq != allnumbers.length+1) {
+  if (currentnotesq != allnumbers.length+1) {
   document.getElementById("insloadbar").style.backgroundColor = "#c12020";
   pose("normal");
   document.getElementById("popup").style.top = "90dvh";
