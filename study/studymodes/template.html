@@ -21,9 +21,8 @@
   <button onclick="check()" id="check">Submit</button>
  <div id="question"><span id="qtext">
  </span></div>
- <textarea maxlength="1000" placeholder="Write some notes about the concept here..." id="inputnotes"></textarea>
- <textarea class="hidden" maxlength="1000" placeholder="Type the answer here..." id="answer"></textarea>
- <div class="hidden" id="notes"></div>
+ <textarea maxlength="1000" placeholder="Type the answer here..." id="answer"></textarea>
+ <div c id="notes"></div>
  <div id="loadbar"><div id="insloadbar"></div></div><span onclick="window.location.href = '../../study/sets/study'.concat(current.concat('.html'))" id="x">X</span>
 </div>
 <div id="secondpart" class="hidden">
@@ -529,6 +528,20 @@ sessionStorage.removeItem("setToUse");
 window.location.href = "../../study/studyurlerror.html";
 }
   
+breakdown = localStorage.getItem(current + "mmrefs");
+totalnotes = [];
+nwnot = "";
+for (a = 0; a < breakdown.length; a++) {
+  if (breakdown.substring(a, a+3) == "\\\\\\") {
+    totalnotes.push(nwnot);
+    nwnot = "";
+    a+=2;
+  } else {
+    nwnot = nwnot + breakdown[a];
+  }
+}
+document.getElementById("notes").innerHTML = totalnotes[0];
+
 //Begin
 if (sessionStorage.getItem("mm") == current) {
   document.getElementById("finish").innerHTML = "Next";
@@ -600,7 +613,7 @@ for (i = 1; i <= parseInt(localStorage.getItem(current.concat("qat"))); i++) {
 }
 clbl = 0;
 notestoUse = [];
-isquestions = false;
+isquestions = true;
 function finish() {
   window.location.href = "../../study/sets/study".concat(current, ".html");
 }
@@ -907,7 +920,7 @@ function check() {
   if (clbl != 100) {
   clbl += (100 - clbl) / (allnumbers.length + 1 - currentq);
   }
-  document.getElementById("insloadbar").style.width = 40 + clbl * 0.6 + "%";
+  document.getElementById("insloadbar").style.width = clbl + "%";
   currentq++;
   } else {
     currentnotesq++;
@@ -996,7 +1009,7 @@ function next() {
     document.getElementById("answer").classList.remove("hidden");
     document.getElementById("notes").style.opacity = 1; 
     document.getElementById("qtext").innerHTML = "".concat(localStorage.getItem(current.concat("q", allnumbers[currentq - 1])));
-    document.getElementById("notes").textContent = notestoUse[parseInt(allnumbers[currentq - 1]) - 1];
+    document.getElementById("notes").textContent = totalnotes[parseInt(allnumbers[currentq - 1]) - 1];
     } else {
       document.getElementById("inputnotes").value = "";
 
