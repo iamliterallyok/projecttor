@@ -667,10 +667,7 @@ function calculaterec() {
       }
     }
   } else {
-    if (localStorage.getItem("pref") == "v") { 
-      steps.push("ske0");
-      remINX(neww.indexOf("Sketch and Answer"));
-    } else if (localStorage.getItem("pref") == "l" && localStorage.getItem(current + "terms") == "1") {
+    if (localStorage.getItem("pref") == "l" && localStorage.getItem(current + "terms") == "1") {
       steps.push("ant0");
       remINX(neww.indexOf("Answer with an Antonym"));
     } else if (localStorage.getItem("pref") == "a" || localStorage.getItem("aorw") == "a") {
@@ -721,10 +718,7 @@ function calculaterec() {
     }
     }
     
-    if (localStorage.getItem("pref") == "v") { 
-      steps.push("ske1");
-      remINX(neww.indexOf("Sketch and Answer"));
-    } else if (localStorage.getItem("pref") == "l" && localStorage.getItem(current + "terms") == "1") {
+    if (localStorage.getItem("pref") == "l" && localStorage.getItem(current + "terms") == "1") {
       steps.push("ant1");
       remINX(neww.indexOf("Answer with an Antonym"));
     } else if (localStorage.getItem("pref") == "a" || localStorage.getItem("aorw") == "a") {
