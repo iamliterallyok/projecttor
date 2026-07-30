@@ -666,7 +666,11 @@ function ontothenext() {
   stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
+  if (nptogo == allplacestogo.length) {
+  sessionStorage.setItem("wpr", "../study/studymodes/magicmemorizesummary");
+  } else {
   sessionStorage.setItem("wpr", "../study/studymodes/" + pages[allplacestogo[nptogo]]);
+  }
   window.location.href = "../../redirecting/";
 }
 numttalsz = 0;
