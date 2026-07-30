@@ -28,7 +28,7 @@ In *Play Mode,* all of the modes are built in such a way that kids can team up w
 In *Study Mode,* a substantial portion of the study modes are made for social learners, meaning that Study Slooth™ revolutionizes education by incorporating styles of learning that rely on communication and social interaction.
 
 ## 3. Personalization / Study Mode
-In *Study Mode,* there are approximately thirty-one methods of study that directly appeal to certain learning styles, whether that be auditory, visual, tactile, logical, social, or written learning. Study modes like *True or False* appeal to logical and tactile learners, whereas study modes such as *Explain with Whiteboard* appeal to visual, social, and auditory learners. 
+In *Study Mode,* there are approximately thirty-three methods of study that directly appeal to certain learning styles, whether that be auditory, visual, tactile, logical, social, or written learning. Study modes like *True or False* appeal to logical and tactile learners, whereas study modes such as *Explain with Whiteboard* appeal to visual, social, and auditory learners. 
 
 The algorithm that drives *Study Mode* is *Magic Memorize,* which takes a unique combination of details about the study material, student's learning style(s), and time contraints and creates a unique pattern and combination of any of the study modes that progressively get harder and reinforce content.
 
