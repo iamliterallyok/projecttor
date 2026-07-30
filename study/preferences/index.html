@@ -879,12 +879,14 @@ function ans(answertq) {
     if (prefmod == -1) {
     alert("Please select what you believe to be your best learning style.");
     } else {
-    if (prefmod == 1 || prefmod == 2) {
+    if (prefmod == 1 || prefmod == 2) 
       lll++;
       if (prefmod == 1) {
         localStorage.setItem("aorw", "w");
+        localStorage.setItem("pref", "w");
       } else {
-        localStorage.setItem("aorw", "a");  
+        localStorage.setItem("aorw", "a"); 
+        localStorage.setItem("pref", "a");
       }
       currentaorw = "67";
       donine();
