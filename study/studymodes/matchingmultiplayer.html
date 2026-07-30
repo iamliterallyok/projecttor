@@ -599,7 +599,8 @@ function ontothenext() {
   }
   brfdota = parseInt(brfdota);
   brfdotb = parseInt(brfdotb);
-  stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
+  allcorrect = numcorrect;
+  stringe = stringe + (allcorrect + brfdota).toString() + "." + (parseInt(localStorage.getItem(current + "qat")) + brfdotb).toString() + "/" + numttalsz.toString() + "/";
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
   if (nptogo == allplacestogo.length) {
