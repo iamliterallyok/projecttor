@@ -463,6 +463,7 @@ function resume() {
 function restart() {
   localStorage.removeItem(current + "mm");
   localStorage.removeItem(current + "mmrefs");
+  sessionStorage.setItem("setToUse", current);
   window.location.href = "../../study/studymodes/setupmagicmemorize.html";
 }
 document.getElementById("nameofset").innerHTML = localStorage.getItem(current.concat("n"));
