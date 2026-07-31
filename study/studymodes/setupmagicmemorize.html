@@ -490,24 +490,24 @@ function randomizearrays() {
   gametypes2 = [["l"], ["l","t"], ["l","t"], ["l","t","v"], ["t","v"], ["t","w"], ["s","t","v"], ["l","t"], ["l","t","w"], ["l","s","t","w"], ["a","l","t"], ["a","s"], ["a","s","v","w"], ["l","t","w"], ["l","s","t","w"], ["a","s","v"], ["a","s"], ["l","v","w"], ["a","w"], ["a"], ["a","t"], ["l","t","w"], ["w"], ["w"], ["l","w"], ["a","l","w"], ["l","w"]];
   gamedifs2 = [1, 2, 2, 4, 3, 2, 2, 2, 4, 3, 4, 5, 5, 2, 2, 2, 2, 1, 5, 5, 2, 2, 5, 5, 1, 1, 0];
   if (localStorage.getItem(current.concat("terms")) != "1") {
-    allgames2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
     gametypes2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
     gamedifs2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
+    allgames2.splice(allgames2.indexOf("Answer with an Antonym"), 1);
   }
   if (parseInt(localStorage.getItem(current.concat("qat"))) < 3) {
-    allgames2.splice(allgames2.indexOf("Process of Elimination"), 1);
     gametypes2.splice(allgames2.indexOf("Process of Elimination"), 1);
     gamedifs2.splice(allgames2.indexOf("Process of Elimination"), 1);
+    allgames2.splice(allgames2.indexOf("Process of Elimination"), 1);
   }
   if (parseInt(localStorage.getItem(current.concat("qat"))) < 4) {
-    allgames2.splice(allgames2.indexOf("Hot Seat"), 1);
     gametypes2.splice(allgames2.indexOf("Hot Seat"), 1);
     gamedifs2.splice(allgames2.indexOf("Hot Seat"), 1);
+    allgames2.splice(allgames2.indexOf("Hot Seat"), 1);
   }
   if (localStorage.getItem(current.concat("chronological")) != "1") {
-    allgames2.splice(allgames2.indexOf("Chronological Order"), 1);
     gametypes2.splice(allgames2.indexOf("Chronological Order"), 1);
     gamedifs2.splice(allgames2.indexOf("Chronological Order"), 1);
+    allgames2.splice(allgames2.indexOf("Chronological Order"), 1);
   }
   allgames = [];
   gametypes = [];
@@ -653,8 +653,8 @@ function calculaterec() {
       steps.push(neww.indexOf("Listen and Speak"));
       remINX(neww.indexOf("Listen and Speak"));
       } else {
-      steps.push(neww.indexOf("Read and Answer"));
-      remINX(neww.indexOf("Read and Answer"));
+      steps.push(neww.indexOf("Read and Speak"));
+      remINX(neww.indexOf("Read and Speak"));
       }
     } else {
       if (localStorage.getItem("timed") == "1") {
