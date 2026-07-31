@@ -1170,18 +1170,9 @@ document.body.appendChild(img);
 img.addEventListener("load", function(event) {
 cnl++;
 ffog = event.target.id;
-nmslashes = 0;
 for (i = 0; i < ffog.length; i++) {
   if (ffog[i] == "/") {
-    nmslashes++;
-  }
-  if (nmslashes==5 && ffog.substring(i+1, i+9) != "allanims") {
     ff = ffog.substring(i+1, i+5);
-    break;
-  }
-  if (nmslashes==6) {
-    ff = ffog.substring(i+1, i+5);
-    break;
   }
 }
 if (ff == "doub") {
