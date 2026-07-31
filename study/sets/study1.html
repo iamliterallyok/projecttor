@@ -22,7 +22,10 @@
 <div id="wbgnew"></div>
 <div id="content">
 <div id="heading"><div id="fadedbg"></div><span id="nameofset"></span></div>
-<p id="desc">Choose between a variety of different ways to study.</p><div onclick="redirecttoads('setupmagicmemorize')" id="magicmemorize"><img class="mmlogo" src="../../media/images/studymode/mmlogo.png"></div>
+<p id="desc">Choose between a variety of different ways to study.</p><div onclick="restart()" id="magicmemorize">
+  <div onclick="resume()" class="hidden" id="resume"></div>
+  <div onclick="restart()" class="hidden" id="new"></div>
+  <img class="mmlogo" src="../../media/images/studymode/mmlogo.png"></div>
 <p class="desc" id="descr">Recommended for You:</p>
 <p class="desc" id="descw">For Written Learners:</p>
 <p class="desc" id="desca">For Auditory Learners:</p>
@@ -35,6 +38,36 @@
 </div>
 </body>
 <style>
+#resume {
+  height: 6dvh;
+  width: 6dvh;
+  background-color: blue;
+  position: absolute;
+  bottom: 2dvh;
+  left: 2dvh;
+  background-color: #c12020;
+  outline: 1dvh solid white; 
+  border-radius: 1.5dvh;
+  background-image: url("../../media/images/studymode/resume.png");
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 1;
+}
+#new {
+  height: 6dvh;
+  width: 6dvh;
+  background-color: blue;
+  position: absolute;
+  bottom: 2dvh;
+  left: 11vh;
+  background-color: #c12020;
+  outline: 1dvh solid white; 
+  border-radius: 1.5dvh;
+  background-image: url("../../media/images/studymode/restart.png");
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 1;
+}
 #wbgnew {
   width: calc(100% - 14.75dvh);
   height: 100dvh;
@@ -368,6 +401,7 @@ body {
 }
 </style>
 <script>
+sessionStorage.setItem("mm", "0");
 document.getElementById("groups").innerHTML = "";
 if (localStorage.getItem("darkmode")) {} else {
   localStorage.setItem("darkmode", "0");
@@ -390,6 +424,46 @@ if (localStorage.getItem(current.concat("whiteboardrecommended"))) {} else {
 } else {
   sessionStorage.setItem("setToUse", current);
   window.location.href = "../../study/preferences/";
+}
+if (localStorage.getItem(current + "mm")) {
+  document.getElementById("resume").classList.remove("hidden");
+  document.getElementById("new").classList.remove("hidden");
+  document.getElementById("magicmemorize").setAttribute("onclick", "resume()");
+}
+pages = ["answerwithanantonym", "processofelimination", "matchingsingleplayer", "chronologicalorder", "flashcards", "unscramble", "matchingmultiplayer", "trueorfalse", "hotseat", "hotseatmultiplayer", "hotseatauditory", "explain", "explainwithwhiteboard", "hotseattrueorfalse", "hotseatmultiplayertrueorfalse", "guesstheterm", "askandanswer", "sketchandanswer", "readandspeak", "listenandspeak", "unscrambleauditory", "fillintheblank", "readandanswer", "timedreadandanswer", "usenotestoanswer", "usenotestospeak", "antonymone", "antonymtwo", "notesone", "notestwo", "notesauditoryone", "notesauditorytwo", "sketchone", "sketchtwo"]
+function resume() {
+  if (event.target.id != "new") {
+  fullmm = localStorage.getItem(current + "mm");
+  ogmmexc = fullmm.substring(2);
+  nptogo = parseInt(fullmm[0]);
+  allplacestogo = [];
+  placeofint = "";
+  for (i = 0; i < ogmmexc.length; i++) {
+    if (ogmmexc[i] == "/") {
+      allplacestogo.push(parseInt(placeofint));
+      lindex = i;
+      break;
+    } else if (ogmmexc[i] == ".") {
+      allplacestogo.push(parseInt(placeofint));
+      placeofint = "";
+    } else {
+      placeofint = placeofint + ogmmexc[i];
+    }
+  }
+  sessionStorage.setItem("mm", current);
+  sessionStorage.setItem("stu", current);
+  if (nptogo == allplacestogo.length) {
+  sessionStorage.setItem("wpr", "../study/studymodes/magicmemorizesummary");
+  } else {
+  sessionStorage.setItem("wpr", "../study/studymodes/" + pages[allplacestogo[nptogo]]);
+  }
+  window.location.href = "../../redirecting/";
+  }
+}
+function restart() {
+  localStorage.removeItem(current + "mm");
+  localStorage.removeItem(current + "mmrefs");
+  window.location.href = "../../study/studymodes/setupmagicmemorize.html";
 }
 document.getElementById("nameofset").innerHTML = localStorage.getItem(current.concat("n"));
 document.getElementById("fadedbg").style.backgroundImage = "url('../../media/images/setcovers/".concat(localStorage.getItem(current.concat("p")), ".png')");
