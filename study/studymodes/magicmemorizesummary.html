@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.2.0/dist/confetti.min.js"></script>
+</head>
+<html>
+<body>
+  <span id="tle"><span id="greenone" style="color: #2dcc70"></span> Total Exercises</span>
+  <span style="top:55dvh; color: #2dcc70" id="tle3"></span>
+  <div id="btmleft"></div>
+  <div id="btmright"></div>
+  <div id="dpthing"></div>
+  <button onclick="returnhome()" id="returnhome">Done</button>
+  <div id="popup">
+   <div id="torabody"></div>
+   <div id="torahead"></div>
+ </div>
+  <div id="bigcircle">
+    <div id="smallcircle">
+        <span style="top:50%; font-size: 10dvh; transform: translate(-50%, -50%)" id="tle2"><span id="greenone2" style="color: #2dcc70"></span>%</span>
+    </div>
+  </div>
+</body>
+<style>
+  #torahead {
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    width: 18.41dvh;
+    height: 12.90dvh;
+    position: absolute;
+    top: -8.31dvh;
+    right: -5.2dvh;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: url("../../media/images/studymode/toraheadnormal.png");
+    transition: 0.8s transform;
+  }
+  #torabody {
+    top: -5.5dvh;
+    right: 6.03dvh;
+    position: absolute;
+    width: 17.56dvh;
+    height: 13.42dvh;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: url("../../media/images/studymode/torabody.png");
+  }
+  #popup {
+    z-index: 102;
+    width: calc(100% - 4.75dvh);
+    height: 100dvh;
+    background-color: #efefef;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 90dvh;
+    border-radius: 4.5dvh;
+    transition: 0.6s;
+  }
+  #returnhome {
+    width: 12dvh;
+    height: 6dvh;
+    border-radius: 2dvh;
+    border: none;
+    outline: 1.5dvh solid #efefef;
+    background-color: white;
+    color: #c12020;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 25dvh;
+    position: absolute;
+    z-index: 2;
+    font-family: fredokaone;
+    font-size: 3.5dvh;
+    cursor: pointer;
+  }
+  #returnhome:hover {
+    outline: 1.5dvh solid #c12020;
+  }
+  #dpthing {
+    position: absolute;
+    width: calc(100% - 20dvh);
+    outline: 2dvh solid #efefef;
+    height: 48dvh;
+    left: 50%;
+    transform: translate(-50%);
+    top: 11dvh;
+    border-radius: 5dvh;
+    max-width: 70dvh;
+  }
+  #smallcircle {
+    background-color: white;
+    width: 75%;
+    height: 75%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+  #bigcircle {
+    position: absolute; 
+    width: 40dvh;
+    height: 40dvh;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    top: 15dvh;
+  }
+  #tle, #tle2, #tle3 {
+    padding: 2dvh;
+    background-color: white;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    position: absolute;
+    top: 5dvh;
+    font-size: 5dvh;
+    text-align: center;
+    white-space: nowrap;
+    color: #c12020;
+  }
+  span {
+    font-family: fredokaone;
+  }
+  @font-face {
+    font-family: fredokaone;
+    src: url("../../media/fonts/fredokaone.otf");
+  }
+  #btmleft, #btmright {
+    position: absolute;
+    top: 100%;
+  }
+  #btmright {
+    right: 100%;
+  }
+  #btmleft {
+    left: 100%;
+  }
+</style>
+<script>
+if (localStorage.getItem("darkmode") == "1") {
+  document.body.style.backgroundColor = "black";
+  document.getElementById("tle").style.color = "white";
+  document.getElementById("tle2").style.color = "white";
+  document.getElementById("tle").style.backgroundColor = "black";
+  document.getElementById("tle2").style.backgroundColor = "black";
+  document.getElementById("tle3").style.backgroundColor = "black";
+  document.getElementById("smallcircle").style.backgroundColor = "black";
+  document.getElementById("popup").style.backgroundColor = "#3a3a3a";
+  document.getElementById("dpthing").style.outlineColor = "#3a3a3a";
+  document.getElementById("returnhome").style.outline = "1.5dvh solid #3a3a3a";
+  document.getElementById("returnhome").style.backgroundColor = "black";
+}
+
+if (sessionStorage.getItem("setToUse")) {
+  current = sessionStorage.getItem("setToUse");
+  sessionStorage.removeItem("setToUse");
+} else {
+  window.location.href = "../../study/studyurlerror.html";
+}
+
+  doconf("btmleft");
+  doconf("btmright");
+  function doconf(idforpos) {
+  confetti({
+    position: { x: document.getElementById(idforpos).offsetLeft, y: document.getElementById(idforpos).offsetTop },
+    count: 1000,	
+    size: 2,			
+    velocity: 350,		
+    fade: false,
+    color: ["#ff8500", "#c12020"]
+  });
+  }
+
+breakid = localStorage.getItem(current + "mm");
+totalslashes = 0;
+newone = "";
+nte = 1;
+for (i = 0; i < breakid.length; i++) {
+  if (breakid[i] == "/") {
+    totalslashes++;
+  } else if (breakid[i] == ".") {
+    nte++;
+  }
+  if (totalslashes == 2) {
+    breakitt = breakid.substring(i+1);
+    break;
+  }
+}
+numbers = [];
+nnm = "";
+for (a = 0; a < breakitt.length; a++) {
+  if (breakitt[a] == "/" || breakitt[a] == ".") {
+    numbers.push(parseInt(nnm));
+    nnm = "";
+  } else {
+    nnm = nnm + breakitt[a];
+  }
+}
+pctr = Math.floor(numbers[0] / numbers[1] * 100);
+scs = numbers[2];
+hours = Math.floor(scs / 3600);
+ogh = hours;
+scs-=(hours*3600);
+if (hours == 0) { hours = ""; } else { hours = hours.toString() + ":"; }
+minutes = Math.floor(scs / 60);
+scs-=(minutes*60);
+if (minutes < 10 && ogh > 0) { minutes = "0" + minutes.toString() } else { minutes = minutes.toString() }
+seconds=scs;
+if (seconds < 10) {seconds = "0" + seconds.toString() } else { seconds = seconds.toString() }
+totaltime = hours + minutes + ":" + seconds;
+
+degtr = Math.floor(numbers[0] / numbers[1] * 360);
+
+if (localStorage.getItem("darkmode") == "1") {
+document.getElementById("bigcircle").style.background = `conic-gradient(#2dcc70 0deg, #2dcc70 ${degtr}deg, #3a3a3a ${degtr}deg, #3a3a3a 360deg)`;
+} else {
+document.getElementById("bigcircle").style.background = `conic-gradient(#2dcc70 0deg, #2dcc70 ${degtr}deg, #efefef ${degtr}deg, #efefef 360deg)`;
+}
+document.getElementById("greenone").innerHTML = nte;
+document.getElementById("greenone2").innerHTML = pctr;
+document.getElementById("tle3").innerHTML = totaltime;
+
+localStorage.removeItem("1mm");
+localStorage.removeItem("1mmrefs");
+sessionStorage.setItem("mm", "0");
+
+setTimeout(function() {
+    document.getElementById("torahead").style.backgroundImage = "url('../../media/images/studymode/toraheadhappy.png')";
+    document.getElementById("torahead").style.transform = "translate(-50%, -50%) rotate(30deg)";
+}, 500);
+
+function returnhome() {
+  window.location.href = `../../study/sets/study${current}.html`;
+}
+</script>
+</html>
