@@ -838,6 +838,7 @@ if (sessionStorage.getItem("mm") == current) {
 }
 pages = ["answerwithanantonym", "processofelimination", "matchingsingleplayer", "chronologicalorder", "flashcards", "unscramble", "matchingmultiplayer", "trueorfalse", "hotseat", "hotseatmultiplayer", "hotseatauditory", "explain", "explainwithwhiteboard", "hotseattrueorfalse", "hotseatmultiplayertrueorfalse", "guesstheterm", "askandanswer", "sketchandanswer", "readandspeak", "listenandspeak", "unscrambleauditory", "fillintheblank", "readandanswer", "timedreadandanswer", "usenotestoanswer", "usenotestospeak", "antonymone", "antonymtwo", "notesone", "notestwo", "notesauditoryone", "notesauditorytwo", "sketchone", "sketchtwo"]
 function ontothenext() {
+  allcorrect = numcorrect;
   ogmm = localStorage.getItem(current+"mm");
   stringe = (parseInt(ogmm.substring(0,1)) + 1).toString() + "/";
   nptogo = parseInt(ogmm.substring(0,1)) + 1;
