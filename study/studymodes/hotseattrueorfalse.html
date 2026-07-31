@@ -646,24 +646,7 @@ function ontothenext() {
   }
   ogmmexc = ogmmexc.substring(lindex+1);
   dotyet = false;
-  brfdota = "";
-  brfdotb = "";
-  for (i = 0; i < ogmmexc.length; i++) {
-    if (ogmmexc[i] == "/") {
-      break;
-    } else if (ogmmexc[i] == ".") {
-      dotyet = true;
-    } else {
-      if (dotyet) {
-        brfdotb = brfdotb + ogmmexc[i];
-      } else {
-        brfdota = brfdota + ogmmexc[i];
-      }
-    }
-  }
-  brfdota = parseInt(brfdota);
-  brfdotb = parseInt(brfdotb);
-  stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
+  v
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
   if (nptogo == allplacestogo.length) {
