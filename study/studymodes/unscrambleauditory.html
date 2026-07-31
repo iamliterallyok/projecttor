@@ -677,6 +677,7 @@ function ontothenext() {
   brfdotb = "";
   for (i = 0; i < ogmmexc.length; i++) {
     if (ogmmexc[i] == "/") {
+      lindex2 = i;
       break;
     } else if (ogmmexc[i] == ".") {
       dotyet = true;
@@ -688,9 +689,20 @@ function ontothenext() {
       }
     }
   }
+  brfdotc = "";
+  ogmmexc = ogmmexc.substring(lindex2+1);
+  for (i=0;i<ogmmexc.length;i++) {
+    if (ogmmexc[i] == "/") {
+      break;
+    } else {
+      brfdotc = brfdotc + ogmmexc[i];
+    }
+  }
   brfdota = parseInt(brfdota);
   brfdotb = parseInt(brfdotb);
-  stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + numttalsz.toString() + "/";
+  brfdotc = parseInt(brfdotc);
+  stringe = stringe + (allcorrect + brfdota).toString() + "." + (allnumbers.length + brfdotb).toString() + "/" + (brfdotc + numttalsz).toString() + "/";
+  
   localStorage.setItem(current + "mm", stringe);
   sessionStorage.setItem("stu", current);
   if (nptogo == allplacestogo.length) {
