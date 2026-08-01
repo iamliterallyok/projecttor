@@ -1,0 +1,432 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<div id="sidebar">
+<div id="toptoolbar">
+<div id="stuff">
+<a href="index.html"><img class="lillogo" src="media/images/smallsslogo.png"></a>
+<a href="privacy-policy/"><div class="liltext">Privacy Policy</div></a>
+<a href="terms-of-use/"><div class="liltext">Terms of Use</div></a>
+<a href="credits/"><div class="liltext">Credits</div></a>
+<a href="contact/"><div class="liltext">Contact</div></a>
+</div>
+<div class="hidden" id="buttontoscroll"><img onclick="scrolle()" src="media/images/buttonscrollright.png" id="btsimg"></div>
+<div class="hidden" id="greygradient"></div>
+<div class="hidden" id="greygradient2"></div>
+</div>
+<div id="undathatoolbar"><div id="uttch"></div></div>
+<div id="content">
+  <img class="sslogo" src="media/images/sslogoorange.png" style="z-index: 1">
+  <img class="sslogo" src="media/images/sslogo.png">
+</div>
+<div onclick="toglsdb()" id="outtab"></div>
+<a><div style="top: 0dvh" class="hyperlink selected"><img src="media/images/toolbar/homedarkgrey.png" class="hpimg"><p class=" hplabel selected">Home</p></div></a>
+<a href="study/"><div style="top: 13.5dvh" class="hyperlink"><img src="media/images/toolbar/studyorange.png" class="hpimg"><img src="media/images/toolbar/study.png" class="hpimg2"><p class="hplabel">Study</p></div></a>
+<a href="play/"><div style="top: 27dvh" class="hyperlink"><img src="media/images/toolbar/playorange.png" class="hpimg"><img src="media/images/toolbar/play.png" class="hpimg2"><p class="hplabel">Play</p></div></a>
+<a href="sets/"><div style="top: 40.5dvh" class="hyperlink"><img src="media/images/toolbar/setsorange.png" class="hpimg"><img src="media/images/toolbar/sets.png" class="hpimg2"><p class="hplabel">Sets</p></div></a>
+<a href="create/"><div style="top: 54dvh" class="hyperlink"><img src="media/images/toolbar/createorange.png" class="hpimg"><img src="media/images/toolbar/create.png" class="hpimg2"><p class="hplabel">Create</p></div></a>
+<a href="import/"><div style="top: 67.5dvh" class="hyperlink"><img src="media/images/toolbar/importorange.png" class="hpimg"><img src="media/images/toolbar/import.png" class="hpimg2"><p class="hplabel">Import</p></div></a>
+<a href="settings/"><div style="top: 85.5dvh" class="hyperlink"><img src="media/images/toolbar/settingsorange.png" class="hpimg"><img src="media/images/toolbar/settings.png" class="hpimg2"><p class="hplabel">Settings</p></div></a>
+</div>
+<div id="groups">
+</div>
+</body>
+<style>
+a {
+  text-decoration: none;
+}
+#stuff {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s left;
+}
+@font-face {
+  font-family: fredokacondensed;
+  src: url("media/fonts/fredokacondensed.ttf");
+}
+.liltext {
+  margin-top: 4.65dvh;
+  color: #ff8500;
+  margin-left: 3.5dvh;
+  font-size: 6dvh;
+  white-space: nowrap;
+  transition: 8s color, 1s left, 0.6s filter, 0.6s text-shadow;
+  cursor: pointer;
+  filter: none;
+}
+.liltext:hover {
+  filter: brightness(0) invert(1);
+  text-shadow: 0 0 6dvh #ff8500;
+}
+.lillogo {
+  margin-top: calc(5.3dvh/2);
+  margin-left: 3dvh;
+  width: auto;
+  height: 10dvh;
+  transition: 1s left, 0.6s filter;
+}
+.lillogo:hover {
+  filter: brightness(0) invert(1);
+}
+.sslogo {
+  width: calc(100% - 20dvh);
+  height: auto;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80dvh;
+  transition: 8s opacity;
+}
+#content {
+  transition: 1s width;
+  width: calc(100% - 14.9dvh);
+  height: 100%;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  position: fixed;
+  z-index: 0;
+}
+  #uttch {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(rgba(0,0,0,0), #29283e);
+  }
+#greygradient2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 28dvh;
+  background: linear-gradient(270deg, rgba(0,0,0,0), #14141f);
+  z-index: 1;
+  pointer-events: none;
+}
+#greygradient {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 28dvh;
+  background: linear-gradient(90deg, rgba(0,0,0,0), #14141f);
+  z-index: 1;
+  pointer-events: none;
+}
+#btsimg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: 0.6s filter;
+  position: absolute;
+  filter: none;
+}
+#buttontoscroll {
+  z-index: 4;
+  overflow: hidden;
+  left: calc(100% - 12dvh);
+  position: absolute;
+  background-color: #ff8500;
+  outline: 1dvh solid #29283e;
+  height: 8dvh;
+  width: 8dvh;
+  top: 50%;
+  border-radius: 2dvh;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 8s background-color, 0.6s outline-color, 0.6s box-shadow;
+}
+#buttontoscroll:hover {
+  outline-color: #efefef;
+  box-shadow: 0 0 8dvh #ff8500;
+}
+#btsimg:hover {
+  filter: brightness(0) invert(1);
+}
+#toptoolbar {
+  background-color: #14141f;
+  width: calc(100% - 14.9dvh);
+  height: 15.3dvh;
+  right: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  transition: 1s width;
+}
+#undathatoolbar {
+  position: fixed;
+  z-index: -10;
+  height: 25dvh;
+  width: calc(100% - 14.9dvh);
+  right: 0;
+  top: 15.3dvh;
+  background-color: #ff8500;
+  transition: 8s background-color, 1s width;
+  opacity: 0.2;
+}
+#outtab {
+  bottom: 3.5dvh;
+  right: -6dvh;
+  width: 4dvh;
+  background-color: #ff8500;
+  transition: 8s background-color;
+  height: 10dvh;
+  z-index: 10;
+  position: absolute;
+  border-radius: 1dvh;
+  background-image: url("media/images/outtab.png");
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+@font-face {
+  font-family: fredokaone;
+  src: url("media/fonts/fredokaone.otf");
+}
+body {
+  font-family: fredokaone;
+  background-color: #29283e;
+}
+#logo {
+  height: 90%;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.selected {
+  color: #14141f;
+  background-color: #ff8500;
+  transition: 8s background-color;
+}
+.hplabel {
+  width: 100%;
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  left: 50%;
+  bottom: 0.75dvh;
+  height: auto;
+  transform: translate(-50%, 0%);
+}
+.hyperlink {
+  color: #ff8500;
+  transition: 8s color, 8s background-color;
+  position: absolute;
+  width: 9dvh;
+  padding: 1.5dvh;
+  height: 12dvh;
+  font-size: 2dvh;
+}
+.hpimg {
+  transition: 8s opacity;
+  top: 1.5dvh;
+  left: 1.5dvh;
+  width: 9dvh;
+  position: absolute;
+  height: 9dvh;
+  z-index: 1;
+}
+.hpimg2 {
+  top: 1.5dvh;
+  left: 1.5dvh;
+  width: 9dvh;
+  position: absolute;
+  height: 9dvh;
+  z-index: 0;
+}
+.author {
+  font-size: 2dvh;
+  font-weight: normal;
+}
+.insidetext {
+  font-weight: bold;
+  font-size: 3dvh;
+  position: absolute;
+  padding: 0;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.group {
+  height: 15dvh;
+  outline: 1.5dvh solid #14141f;
+  border-radius: 1.5dvh;
+  overflow: hidden;
+  position: absolute;
+  background-size: cover;
+  background-position: 50% 50%;
+  filter: brightness(150%);
+}
+#groups {
+  width: 100%;
+  position: absolute;
+  top: 21dvh;
+  height: auto;
+}
+.halfwhite {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.halfblack {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#sidebar {
+  background-color: #14141f;
+  outline: 3dvh solid #ff8500;
+  transition: 8s outline-color, 1s left;
+  width: 12dvh;
+  left: 0dvh;
+  top: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 3;
+}
+</style>
+<script>
+ongr = false;
+setTimeout(function() {
+document.getElementsByClassName("hyperlink selected")[0].style.backgroundColor = "#c12020";
+document.getElementsByClassName("hplabel selected")[0].style.backgroundColor = "#c12020";
+document.getElementById("sidebar").style.outlineColor = "#c12020";
+document.getElementById("outtab").style.backgroundColor = "#c12020";
+document.getElementById("undathatoolbar").style.backgroundColor = "#c12020";
+document.getElementById("buttontoscroll").style.backgroundColor = "#c12020";
+document.getElementsByClassName("sslogo")[0].style.opacity = 0;
+for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
+  document.getElementsByClassName("liltext")[i].style.color = "#c12020";
+}
+for (i = 0; i < 6; i++) {
+  document.getElementsByClassName("hyperlink")[i+1].style.color = "#c12020";
+}
+for (i = 0; i < 6; i++) {
+  document.getElementsByClassName("hpimg")[i+1].style.opacity = 0;
+}
+}, 1);
+
+function scrolle() { 
+  lastdot = (document.getElementById("stuff").offsetWidth + document.getElementById("stuff").offsetLeft) + 0.035 * window.innerHeight;
+  btndot = document.getElementById("buttontoscroll").offsetLeft;
+  document.getElementById("greygradient2").classList.add("hidden");
+  allthewayleft = false;
+  if (lastdot > btndot * 2) {
+    distance = btndot;
+  } else {
+    distance = lastdot - btndot;
+    setTimeout(function() {
+    document.getElementById("buttontoscroll").setAttribute("onclick", "goback()");
+    document.getElementById("btsimg").style.transform = "rotateZ(180deg)";
+    }, 1);
+  }
+  document.getElementById("stuff").style.left = document.getElementById("stuff").offsetLeft - distance + "px";
+}
+
+function goback() {
+  setTimeout(function() {
+  document.getElementById("buttontoscroll").setAttribute("onclick", "scrolle()");
+  document.getElementById("btsimg").style.transform = "rotateZ(0deg)";
+  }, 1);
+  document.getElementById("greygradient2").classList.add("hidden");
+  allthewayleft = true;
+  document.getElementById("stuff").style.left = "0dvh";
+}
+
+setInterval(function() {
+  if (ongr) {
+    ongr = false;
+    document.getElementsByClassName("hyperlink selected")[0].style.backgroundColor = "#c12020";
+    document.getElementsByClassName("hplabel selected")[0].style.backgroundColor = "#c12020";
+    document.getElementById("sidebar").style.outlineColor = "#c12020";
+    document.getElementById("outtab").style.backgroundColor = "#c12020";
+    document.getElementById("buttontoscroll").style.backgroundColor = "#c12020";
+    document.getElementById("undathatoolbar").style.backgroundColor = "#c12020";
+    document.getElementsByClassName("sslogo")[0].style.opacity = 0;
+    for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
+      document.getElementsByClassName("liltext")[i].style.color = "#c12020";
+    } 
+    for (i = 0; i < 6; i++) {
+      document.getElementsByClassName("hyperlink")[i+1].style.color = "#c12020";
+    }
+    for (i = 0; i < 6; i++) {
+      document.getElementsByClassName("hpimg")[i+1].style.opacity = 0;
+    }
+  } else {
+    ongr = true;
+    document.getElementsByClassName("hyperlink selected")[0].style.backgroundColor = "#ff8500";
+    document.getElementsByClassName("hplabel selected")[0].style.backgroundColor = "#ff8500";
+    document.getElementById("sidebar").style.outlineColor = "#ff8500";
+    document.getElementById("outtab").style.backgroundColor = "#ff8500";
+    document.getElementById("buttontoscroll").style.backgroundColor = "#ff8500";
+    document.getElementById("undathatoolbar").style.backgroundColor = "#ff8500";
+    document.getElementsByClassName("sslogo")[0].style.opacity = 1;
+    for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
+      document.getElementsByClassName("liltext")[i].style.color = "#ff8500";
+    }
+    for (i = 0; i < 6; i++) {
+      document.getElementsByClassName("hyperlink")[i+1].style.color = "#ff8500";
+    }
+    for (i = 0; i < 6; i++) {
+      document.getElementsByClassName("hpimg")[i+1].style.opacity = 1;
+    }
+  }
+}, 4000);
+
+allthewayleft = true;
+checkresize();
+window.addEventListener("resize", checkresize);
+function checkresize() {
+  lastne = document.getElementsByClassName("liltext")[document.getElementsByClassName("liltext").length-1];
+  if (document.getElementById("stuff").offsetWidth + document.getElementById("stuff").offsetLeft + 0.035 * window.innerHeight > document.getElementById("buttontoscroll").offsetLeft || allthewayleft == false) {
+    document.getElementById("greygradient").classList.remove("hidden");
+    document.getElementById("buttontoscroll").classList.remove("hidden");
+  } else {
+    document.getElementById("greygradient").classList.add("hidden");
+    document.getElementById("buttontoscroll").classList.add("hidden");
+  }
+}
+
+out = true;
+function toglsdb() {
+  if (out) {
+    out = false;
+    document.getElementById("sidebar").style.left = "-14.8dvh";
+    document.getElementById("toptoolbar").style.width = "100%";
+    document.getElementById("undathatoolbar").style.width = "100%";
+    document.getElementById("content").style.width = "100%";
+  } else {
+    out = true;
+    document.getElementById("sidebar").style.left = "0dvh";
+    document.getElementById("toptoolbar").style.width = "calc(100% - 14.9dvh)";
+    document.getElementById("undathatoolbar").style.width = "calc(100% - 14.9dvh)";
+    document.getElementById("content").style.width = "calc(100% - 14.9dvh)";
+  }
+  for (i = 0; i < 100; i++) {
+    setTimeout(checkresize, i*10);
+  }
+}
+</script>
