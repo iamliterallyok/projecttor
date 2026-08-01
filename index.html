@@ -4,7 +4,7 @@
 <div id="sidebar">
 <div id="toptoolbar">
 <div id="stuff">
-<a href="index.html"><img class="lillogo" src="media/images/smallsslogo.png"></a>
+<a href="index.html"><div class="lillogo"><img id="ll2" style="z-index: 1" class="lillogo2" src="media/images/smallsslogoorange.png"><img class="lillogo2" src="media/images/smallsslogo.png"></div></a>
 <a href="privacy-policy/"><div class="liltext">Privacy Policy</div></a>
 <a href="terms-of-use/"><div class="liltext">Terms of Use</div></a>
 <a href="credits/"><div class="liltext">Credits</div></a>
@@ -32,6 +32,14 @@
 </div>
 </body>
 <style>
+.lillogo2 {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 0;
+  left: 0;
+  transition: 8s opacity; 
+}
 a {
   text-decoration: none;
 }
@@ -55,6 +63,7 @@ a {
   transition: 8s color, 1s left, 0.6s filter, 0.6s text-shadow;
   cursor: pointer;
   filter: none;
+  text-transform: uppercase;
 }
 .liltext:hover {
   filter: brightness(0) invert(1);
@@ -318,6 +327,7 @@ document.getElementById("outtab").style.backgroundColor = "#c12020";
 document.getElementById("undathatoolbar").style.backgroundColor = "#c12020";
 document.getElementById("buttontoscroll").style.backgroundColor = "#c12020";
 document.getElementsByClassName("sslogo")[0].style.opacity = 0;
+document.getElementById("ll2").style.opacity = 0;
 for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
   document.getElementsByClassName("liltext")[i].style.color = "#c12020";
 }
@@ -366,6 +376,8 @@ setInterval(function() {
     document.getElementById("buttontoscroll").style.backgroundColor = "#c12020";
     document.getElementById("undathatoolbar").style.backgroundColor = "#c12020";
     document.getElementsByClassName("sslogo")[0].style.opacity = 0;
+    document.getElementById("ll2").style.opacity = 0;
+
     for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
       document.getElementsByClassName("liltext")[i].style.color = "#c12020";
     } 
@@ -384,6 +396,8 @@ setInterval(function() {
     document.getElementById("buttontoscroll").style.backgroundColor = "#ff8500";
     document.getElementById("undathatoolbar").style.backgroundColor = "#ff8500";
     document.getElementsByClassName("sslogo")[0].style.opacity = 1;
+    document.getElementById("ll2").style.opacity = 1;
+
     for (i = 0; i < document.getElementsByClassName("liltext").length; i++) {
       document.getElementsByClassName("liltext")[i].style.color = "#ff8500";
     }
