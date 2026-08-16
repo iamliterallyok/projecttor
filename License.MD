@@ -1,4 +1,4 @@
-Copyright © 2026 iamliterallyok. All Rights Reserved.
+Copyright © 2026 Study Slooth. All Rights Reserved.
 
 # License and Terms of Use | Study Slooth™
 
