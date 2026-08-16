@@ -1,4 +1,4 @@
-Copyright © 2026 iamliterallyok. All Rights Reserved.
+Copyright © 2026 Study Slooth. All Rights Reserved.
 
 <img width="2519" height="1049" alt="studyslooth" src="https://github.com/user-attachments/assets/28a01a38-d159-4310-9d06-28aa280a80c2" />
 
