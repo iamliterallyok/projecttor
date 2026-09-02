@@ -933,19 +933,20 @@ function calculateratios(className,buttonid) {
   for (i = 0; i < document.getElementsByClassName(className).length; i++) {
     document.getElementsByClassName(className)[i].style.transition = "none";
   }
-  setTimeout(function() {
-  window[alvals[stptvals.indexOf(className)] + "alvals"] = [];
-  for (i = 0; i < document.getElementsByClassName(className).length; i++) {
-    if (i+stptu >= maxnums[stptvals.indexOf(className)]) {
-      itu = i+stptu - maxnums[stptvals.indexOf(className)];
+  setTimeout(runalittlelater, 1, nopr, className);
+}
+function runalittlelater(noprval,cnam) {
+  window[alvals[stptvals.indexOf(cnam)] + "alvals"] = [];
+  for (i = 0; i < document.getElementsByClassName(cnam).length; i++) {
+    if (i+stptu >= maxnums[stptvals.indexOf(cnam)]) {
+      itu = i+stptu - maxnums[stptvals.indexOf(cnam)];
     } else {
       itu = i+stptu;
     }
-    document.getElementsByClassName(className)[itu].style.width = `calc((100% - ${(nopr-1)*2.5}lvh) / ${nopr})`;
-    document.getElementsByClassName(className)[itu].style.left = `calc(${i} * ((100% - ${(nopr-1)*2.5}lvh) / ${nopr} + 2.5lvh))`; 
-    window[alvals[stptvals.indexOf(className)] + "alvals"].push(document.getElementsByClassName(className)[itu].style.left);
+    document.getElementsByClassName(cnam)[itu].style.width = `calc((100% - ${(noprval-1)*2.5}lvh) / ${noprval})`;
+    document.getElementsByClassName(cnam)[itu].style.left = `calc(${i} * ((100% - ${(noprval-1)*2.5}lvh) / ${noprval} + 2.5lvh))`; 
+    window[alvals[stptvals.indexOf(cnam)] + "alvals"].push(document.getElementsByClassName(cnam)[itu].style.left);
   }
-  }, 1);
 }
 function calculatetoolbar() {
   if (window.innerHeight / window.innerWidth > 0.8) {
